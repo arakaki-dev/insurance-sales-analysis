@@ -93,6 +93,9 @@ streamlit run app.py
 ### 時間帯別分析
 ![Hourly Analysis](notebooks/hourly_analysis.png)
 
+### 顧客属性クロス分析（年齢・性別）
+![Customer Analysis](notebooks/customer_analysis.png)
+
 ### 月次トレンド
 ![Monthly Trend](notebooks/monthly_trend.png)
 
