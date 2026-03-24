@@ -1,7 +1,7 @@
 # 📊 生命保険 アウトバウンドコール 営業成績分析ポートフォリオ
 
 > **Life Insurance Outbound Call — Sales Performance Analysis**
-> BIエンジニアとしての分析・統計検定・機械学習・エンジニアリングスキルをデモンストレーションするポートフォリオ作品です。
+> 分析・統計検定・機械学習・エンジニアリングを生成AIで作成したポートフォリオです。
 
 [![CI](https://github.com/arakaki-dev/insurance-sales-analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/arakaki-dev/insurance-sales-analysis/actions/workflows/ci.yml)
 
