@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | { read -r f; echo \"$f\" | grep -qE '/tmp/insurance-sales-analysis/(app|clean_data|generate_data)\\.py$' && cd /tmp/insurance-sales-analysis && ~/miniconda3/bin/python -m pytest tests/ -q 2>&1 | tail -15; } 2>/dev/null || true",
+            "timeout": 60,
+            "statusMessage": "pytest 実行中..."
+          }
+        ]
+      }
+    ]
+  }
+}

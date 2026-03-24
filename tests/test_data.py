@@ -234,3 +234,31 @@ def test_clean_weekday_only_calls(calls):
 def test_clean_duplicate_call_flag_binary(calls):
     """is_duplicate_call が 0 or 1 のみであること"""
     assert set(calls["is_duplicate_call"].unique()).issubset({0, 1})
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# app.py との整合性チェック
+# クレンジング後に生まれた値（'不明'等）がUIフィルターから漏れていないか検証する
+# ──────────────────────────────────────────────────────────────────────────────
+
+def test_app_age_order_covers_all_values(calls):
+    """app.pyのage_orderがcalls.csvの全年齢層値をカバーしていること
+
+    clean_data.pyが'不明'を補完した場合、app.pyのage_orderにも含まれていないと
+    Streamlitのデフォルトフィルターからそのレコードが除外される。
+    """
+    import re
+    import ast
+    app_path = os.path.join(os.path.dirname(__file__), "..", "app.py")
+    with open(app_path) as f:
+        content = f.read()
+    match = re.search(r"age_order\s*=\s*(\[.*?\])", content)
+    assert match, "app.pyにage_orderが見つかりません"
+    age_order = ast.literal_eval(match.group(1))
+    actual_values = set(calls["customer_age_group"].dropna().unique())
+    missing = actual_values - set(age_order)
+    assert not missing, (
+        f"app.pyのage_orderに含まれていない値: {missing}\n"
+        "→ clean_data.pyのクレンジング後に追加された値と思われます。"
+        "app.pyのage_orderに追加してください。"
+    )
