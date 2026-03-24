@@ -93,6 +93,12 @@ streamlit run app.py
 ### 月次トレンド
 ![Monthly Trend](notebooks/monthly_trend.png)
 
+### 商品別 成約実績
+![Product Analysis](notebooks/product_analysis.png)
+
+### 成約予測モデル（特徴量重要度）
+![ML Feature Importance](notebooks/ml_feature_importance.png)
+
 ---
 
 ## 💡 主要インサイト（分析結果サマリー）
