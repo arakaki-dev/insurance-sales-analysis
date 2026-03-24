@@ -129,7 +129,7 @@ selected_results = st.sidebar.multiselect("コール結果", all_results, defaul
 
 # 顧客属性フィルター
 st.sidebar.markdown("**顧客属性**")
-age_order = ['20代', '30代', '40代', '50代', '60代以上']
+age_order = ['20代', '30代', '40代', '50代', '60代以上', '不明']
 all_ages = [a for a in age_order if a in df['customer_age_group'].unique()]
 selected_ages = st.sidebar.multiselect("年齢層", all_ages, default=all_ages)
 
